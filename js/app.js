@@ -27,6 +27,41 @@ function addDom($card,cards_all) {
     $(this).find('.fa').addClass(cards_all[i]);
   });
 }
+/**
+* @description display the symbol of click card
+* @param $card
+* @param index
+*/
+function displaySymbol($card,index) {
+   $card[index].className += ' open show';
+}
+/**@description check the situation of two cards
+ * @param openCard
+ * @param matchlength
+ * @param counter
+ * @param startnum
+ * @param clearid
+ * @param mydate
+ * @param $card
+ */
+ function checkMatch(openCard,matchlength,counter,startnum,clearid,mydate,$card) {
+    let second;
+    let card1 = $card[openCard[0]].children[0].className;
+    let card2 = $card[openCard[1]].children[0].className;
+    if(card1 === card2){
+      lockCard($card,openCard);
+      matchlength.push(openCard[0]);
+      matchlength.push(openCard[1]);
+    }
+    else {
+      removeCard($card,openCard);
+    }
+    if(matchlength.length === 16){
+      second = second(mydate);
+      addMessage(counter,startnum,second);
+      clearTimeout(clearid);
+    }
+ }
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
  *  - 显示卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
