@@ -136,3 +136,10 @@ h1 {
     float: right;
     cursor: pointer;
 }
+.score-panel .time {
+  display：inline-block;
+  margin-left:50%;
+}
+.score-panel .time span {
+  font-weight: 600;
+}
