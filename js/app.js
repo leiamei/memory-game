@@ -188,6 +188,28 @@ function displaySymbol($card,index) {
    let second = Math.floor((date.getTime() - baDate)/1000);
    return second;
  }
+ /**@description refresh the game
+ *@param classname
+ */
+ function restart(className) {
+   $(className).blind("click",function() {
+     window.location = location;
+   })
+ }
+ /**@description setInterval function
+ *@param func
+ *@param wait
+ *@returns {number/*}
+ */
+ function interval(func,wait) {
+   let id;
+   let interv = function() {
+     func.call(null);
+     id = setTimeout(interv,wait);
+   };
+   id = setTimeout(interv,wait);
+   return id;
+ }
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
  *  - 显示卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
