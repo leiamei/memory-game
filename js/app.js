@@ -62,6 +62,23 @@ function displaySymbol($card,index) {
       clearTimeout(clearid);
     }
  }
+ /**
+ *@description diaplay the information when player is win
+ *@param counter
+ *@param startnum
+ *@param second
+ */
+ function addMessage(counter,startnum,second) {
+   $('.container').remove();
+   let html = $('<div class ="result"><div>');
+   let html = $('<p class ="re-won">Congratulations! you won !</p>');
+   let info2 = $('<p class="re-moves">With&nbsp;'+counter+'&nbsp;Moves&nbsp;&nbsp;,&nbsp;&nbsp;'+second+'&nbsp;seconds&nbsp;&nbsp;and&nbsp;&nbsp;'+startnum+'&nbsp;Stars. </p>');
+   let info3 = $('<p class="re-moves">Woooooo!</p>');
+   let button = $('<p class="re-button">Play again!</p>');
+   html.append(info1,info2,info3,button);
+   $(document.body).append(html);
+   restart('.re-button');
+ }
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
  *  - 显示卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
