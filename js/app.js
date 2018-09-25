@@ -132,6 +132,42 @@ function displaySymbol($card,index) {
    let starnum = $(".stars>li").length;
    return starnum;
  }
+
+ /**@description when the two cards are not match,display the wrong color and remover the card's classname
+ *@param $card
+ *@param openCard
+ */
+ function removeCard($card,openCard) {
+   $.each(openCard,function(i,data) {
+     $card[data].className = 'card notm animates wobble';
+     (function(n) {
+       function f() {
+         n.className = 'card';
+       }
+       setTimeout(f,1000);
+     })($card[data])
+   })
+ }
+
+ /**@description when the two cards are match,change card's classname and cancel the click event
+ *@param $card
+ *@param openCard
+ */
+ function lockCard($card,openCard) {
+   let match =[];
+   $.each(openCard,function(i,data) {
+     $card[data].className = 'card match animated bounce';
+     match.push(data);
+   });
+   $.each($card,function(index) {
+     for(let j = 0;j < match.length;j++) {
+       if(index == match[j]) {
+         let cancel = $card[index];
+         $(cancel).unbind("click");
+       }
+     }
+   })
+ }
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
  *  - 显示卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
