@@ -79,6 +79,39 @@ function displaySymbol($card,index) {
    $(document.body).append(html);
    restart('.re-button');
  }
+ /**@description play function
+ * @param $card
+ */
+ function play($card) {
+   let openCard = [];
+   let matchLength = [];
+   let counter = 0;
+   let startnum, clearid,mydate;
+   let time = true;
+   $card.bind("click",funtion() {
+    if(time){
+      let beDate = new Date();
+      myDate = beDate.getTime();
+      clearid = timer(0);
+      time = false;
+    }
+    let n = $card.index(this);
+    openCard.push(n);
+    if (openCard[0]!=openCard[1]){
+      displaySymbol($card,n);
+    }
+    else{
+      openCard.pop();
+    }
+    if(openCard.length === 2){
+      counter +=1;
+      displayNum(counter);
+      startnum = displayStar(counter);
+      checkMatch(openCard,matchlength,counter,startnum,clearid,myDate,$card);
+      openCard.splice(0,openCard.length);
+    }
+   })
+ }
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
  *  - 显示卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
