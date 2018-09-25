@@ -112,6 +112,26 @@ function displaySymbol($card,index) {
     }
    })
  }
+ /**@description display the pace of player
+ * @param counter
+ */
+ functin displayNum(counter) {
+   $('.moves').text("").append(counter);
+ }
+ /**@description display the starts of player
+ *@param counter
+ *@return {jQuery}
+ */
+ function displayStar(counter) {
+   if(counter >12 && counter <=16) {
+     $('.stars>li:eq(2)').remove();
+   }
+   else if(counter>16) {
+     $('.starts >li:eq(1)').remove();
+   }
+   let starnum = $(".stars>li").length;
+   return starnum;
+ }
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
  *  - 显示卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
