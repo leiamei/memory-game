@@ -168,6 +168,26 @@ function displaySymbol($card,index) {
      }
    })
  }
+
+ /**@description timer
+ *@param i
+ *@returns {number/*}
+ */
+ function timer(i) {
+   return interval(function() {
+     i +=1;
+     $('.time span').text("").append(i);
+   },1000);
+ }
+ /**@description timepiece
+ *@param bsDate
+ *@returns {number}
+ */
+ function seconds(bsDate) {
+   let date = new Date();
+   let second = Math.floor((date.getTime() - baDate)/1000);
+   return second;
+ }
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
  *  - 显示卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
